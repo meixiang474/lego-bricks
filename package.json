@@ -1,19 +1,45 @@
 {
-  "name": "lego-bricks",
-  "version": "0.1.0",
-  "private": true,
+  "name": "icya-lego-bricks",
+  "version": "1.0.0",
+  "private": false,
+  "author": "meixiang474",
+  "license": "MIT",
+  "keywords": ["Component", "Vue3", "UI"],
+  "homepage": "https://github.com/meixiang474/lego-bricks",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/meixiang474/lego-bricks"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "npm run clean && npm run build:esm && npm run build:umd && npm run build:css && npm run build:sass",
+    "build:esm": "rollup --config build/rollup.esm.config.js",
+    "build:umd": "rollup --config build/rollup.umd.config.js",
+    "build:css": "node-sass ./src/components/index.scss ./dist/index.css",
+    "build:sass": "node build/sass.js",
+    "clean": "rimraf ./dist",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "commitlint": "commitlint -e",
+    "prepublishOnly": "npm run lint && npm run test:unit && npm run build"
   },
+  "files": [
+    "dist"
+  ],
+  "main": "dist/icya-lego-bricks.umd.js",
+  "module": "dist/icya-lego-bricks.esm.js",
+  "types": "dist/components/index.d.ts",
   "dependencies": {
     "core-js": "^3.6.5",
-    "vue": "^3.0.0"
+    "lodash-es": "^4.17.21"
   },
   "devDependencies": {
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "@rollup/plugin-node-resolve": "^13.0.0",
+    "@rollup/plugin-typescript": "^8.2.1",
     "@types/jest": "^24.0.19",
+    "@types/lodash-es": "^4.17.4",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -23,12 +49,26 @@
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0",
     "@vue/eslint-config-typescript": "^7.0.0",
-    "@vue/test-utils": "^2.0.0-0",
+    "@vue/test-utils": "^2.0.0-beta.14",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0",
+    "node-sass": "^6.0.0",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.47.0",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "rollup-plugin-vue": "^6.0.0",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
+    "simple-git-hooks": "^2.4.1",
     "typescript": "~4.1.5",
+    "vue": "^3.0.0",
     "vue-jest": "^5.0.0-0"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npm run lint",
+    "commit-msg": "npm run commitlint"
   }
 }
