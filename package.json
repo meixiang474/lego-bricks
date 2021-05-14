@@ -1,6 +1,6 @@
 {
   "name": "icya-lego-bricks",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": false,
   "author": "meixiang474",
   "license": "MIT",
@@ -18,10 +18,10 @@
     "build:css": "node-sass ./src/components/index.scss ./dist/index.css",
     "build:sass": "node build/sass.js",
     "clean": "rimraf ./dist",
-    "test:unit": "vue-cli-service test:unit",
+    "test": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "commitlint": "commitlint -e",
-    "prepublishOnly": "npm run lint && npm run test:unit && npm run build"
+    "prepublishOnly": "npm run lint && npm run test && npm run build"
   },
   "files": [
     "dist"

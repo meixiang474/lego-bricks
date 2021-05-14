@@ -13,6 +13,8 @@ const install = (app: App) => {
 
 export { install, LText, LImage, LShape };
 
+export * from "./defaultProps";
+
 export default {
   install,
 };
