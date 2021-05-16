@@ -5,7 +5,7 @@ import { name } from "../package.json";
 const file = (type) => `dist/${name}.${type}.js`;
 const overrides = {
   compilerOptions: { declaration: true },
-  exclude: ["tests/**/*.ts", "tests/**/*.tsx"],
+  exclude: ["tests/**/*.ts", "tests/**/*.tsx", "src/main.ts"],
 };
 export { name, file };
 export default {

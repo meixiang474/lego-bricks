@@ -22,7 +22,7 @@ components.forEach((component) => {
     const sass = fs.readFileSync(sourceSassPath);
     const targetSassPath = path.join(
       __dirname,
-      `../dist/components/${component}/index.scss`
+      `../dist/${component}/index.scss`
     );
     fs.writeFileSync(targetSassPath, sass);
   }
@@ -31,6 +31,6 @@ components.forEach((component) => {
 globalSass.forEach((item) => {
   const sourcePath = path.join(__dirname, `../src/components/${item}`);
   const content = fs.readFileSync(sourcePath);
-  const targetPath = path.join(__dirname, `../dist/components/${item}`);
+  const targetPath = path.join(__dirname, `../dist/${item}`);
   fs.writeFileSync(targetPath, content);
 });

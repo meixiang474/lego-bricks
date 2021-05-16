@@ -1,6 +1,6 @@
 {
   "name": "icya-lego-bricks",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": false,
   "author": "meixiang474",
   "license": "MIT",
@@ -28,7 +28,7 @@
   ],
   "main": "dist/icya-lego-bricks.umd.js",
   "module": "dist/icya-lego-bricks.esm.js",
-  "types": "dist/components/index.d.ts",
+  "types": "dist/index.d.ts",
   "dependencies": {
     "core-js": "^3.6.5",
     "lodash-es": "^4.17.21"
